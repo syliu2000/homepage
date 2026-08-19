@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dr. Shaoyang Liu — Professor of Chemistry at Troy University. Research in analytical chemistry, sustainable materials, polymer recycling, and applied spectroscopy.">
+  <meta name="theme-color" content="#102e2c">
+  <title>Shaoyang Liu, Ph.D. | Analytical Chemistry</title>
+  <style>
+    :root {
+      --ink: #17302f;
+      --muted: #637370;
+      --paper: #f7f5ef;
+      --white: #fffefa;
+      --green: #1f5851;
+      --green-dark: #102e2c;
+      --sage: #dbe5dc;
+      --gold: #d8a34b;
+      --line: rgba(23, 48, 47, .14);
+      --shadow: 0 24px 70px rgba(27, 50, 47, .10);
+      --radius: 22px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    ::selection { color: var(--white); background: var(--green); }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      transform: translateY(-160%);
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      color: white;
+      background: var(--green-dark);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid transparent;
+      background: rgba(247, 245, 239, .86);
+      backdrop-filter: blur(16px);
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    header.scrolled { border-color: var(--line); box-shadow: 0 8px 30px rgba(25, 48, 45, .06); }
+    nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .brand { display: inline-flex; align-items: center; gap: .85rem; text-decoration: none; font-weight: 760; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--green-dark);
+      font-family: var(--serif);
+      font-size: 1.05rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.65rem; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 650; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--green); }
+    .nav-cta { padding: .66rem 1rem; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+
+    .hero { position: relative; overflow: hidden; padding: clamp(74px, 9vw, 126px) 0 96px; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      top: -250px;
+      right: -160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216, 163, 75, .22), transparent 68%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(48px, 7vw, 100px); align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: .65rem; margin-bottom: 1.25rem; color: var(--green); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 1.45rem; max-width: 760px; font-family: var(--serif); font-size: clamp(3.7rem, 7.5vw, 6.9rem); font-weight: 400; line-height: .94; letter-spacing: -.055em; }
+    h1 span { display: block; color: var(--green); font-style: italic; }
+    .hero-copy { max-width: 690px; color: var(--muted); font-size: clamp(1.08rem, 1.5vw, 1.28rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.1rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 48px; padding: .78rem 1.18rem; border: 1px solid var(--green); border-radius: 999px; color: var(--white); background: var(--green); text-decoration: none; font-weight: 760; transition: transform .18s ease, background .18s ease; }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); background: var(--green-dark); }
+    .button.secondary { color: var(--ink); border-color: var(--line); background: var(--white); }
+    .button.secondary:hover, .button.secondary:focus-visible { background: var(--sage); }
+    .arrow { font-size: 1.12em; }
+
+    .portrait-wrap { position: relative; }
+    .portrait-card { position: relative; min-height: 560px; overflow: hidden; border-radius: 240px 240px 26px 26px; background: var(--sage); box-shadow: var(--shadow); }
+    .portrait-card img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: 58% center; filter: saturate(.78) contrast(.97); }
+    .portrait-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 52%, rgba(10, 35, 32, .5)); }
+    .photo-note { position: absolute; right: -24px; bottom: 42px; z-index: 2; width: min(250px, 72%); padding: 1.15rem 1.25rem; border-radius: 16px; color: var(--white); background: var(--green-dark); box-shadow: 0 18px 45px rgba(12, 38, 35, .25); }
+    .photo-note strong { display: block; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; line-height: 1.25; }
+    .photo-note span { display: block; margin-top: .32rem; color: rgba(255,255,255,.72); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+
+    section { padding: 104px 0; }
+    .section-kicker { color: var(--green); font-size: .76rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .section-title { max-width: 820px; margin: .65rem 0 1.2rem; font-family: var(--serif); font-size: clamp(2.45rem, 4.5vw, 4.2rem); font-weight: 400; line-height: 1.06; letter-spacing: -.04em; }
+    .section-intro { max-width: 710px; color: var(--muted); font-size: 1.08rem; }
+
+    .about { border-block: 1px solid var(--line); background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(42px, 8vw, 110px); align-items: start; }
+    .about-aside { position: sticky; top: 110px; }
+    .about-copy p { margin-bottom: 1.35rem; font-family: var(--serif); font-size: clamp(1.35rem, 2.05vw, 1.9rem); line-height: 1.52; }
+    .about-copy p + p { color: var(--muted); font-family: var(--sans); font-size: 1rem; line-height: 1.75; }
+    .mini-facts { display: grid; gap: .9rem; margin-top: 2rem; }
+    .mini-fact { padding-top: .9rem; border-top: 1px solid var(--line); }
+    .mini-fact b { display: block; margin-bottom: .15rem; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+    .mini-fact span { color: var(--muted); }
+
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3.1rem; }
+    .focus-card { min-height: 310px; padding: 2rem; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,254,250,.62); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .focus-card:hover { transform: translateY(-5px); border-color: rgba(31,88,81,.35); box-shadow: var(--shadow); }
+    .focus-number { color: var(--gold); font-family: var(--serif); font-size: 1.2rem; }
+    .focus-card h3 { margin: 4.8rem 0 .8rem; font-family: var(--serif); font-size: 1.55rem; font-weight: 400; line-height: 1.2; }
+    .focus-card p { margin-bottom: 0; color: var(--muted); font-size: .94rem; }
+
+    .feature { color: var(--white); background: var(--green-dark); }
+    .feature-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 7vw, 90px); align-items: center; }
+    .feature .section-kicker { color: #c8dbcf; }
+    .feature .section-title { color: var(--white); }
+    .feature-copy p { color: rgba(255,255,255,.68); }
+    .grant-amount { margin-bottom: .4rem; color: var(--gold); font-family: var(--serif); font-size: clamp(4.3rem, 8vw, 7.5rem); line-height: .9; letter-spacing: -.05em; }
+    .grant-label { max-width: 420px; color: rgba(255,255,255,.76); font-size: .9rem; letter-spacing: .05em; text-transform: uppercase; }
+    .feature-link { display: inline-flex; margin-top: 1.3rem; color: white; text-underline-offset: 5px; font-weight: 700; }
+
+    .publications-head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
+    .publication-list { margin-top: 3.2rem; border-top: 1px solid var(--line); }
+    .publication { display: grid; grid-template-columns: 76px minmax(0, 1fr) minmax(190px, .38fr); gap: 1.4rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); text-decoration: none; }
+    .publication:hover .pub-title { color: var(--green); }
+    .pub-year { color: var(--gold); font-family: var(--serif); font-size: 1.2rem; }
+    .pub-title { display: block; font-family: var(--serif); font-size: 1.22rem; line-height: 1.35; transition: color .18s ease; }
+    .pub-venue { color: var(--muted); font-size: .9rem; text-align: right; }
+
+    .teaching { background: var(--sage); }
+    .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 7vw, 92px); }
+    .teaching-copy { max-width: 540px; }
+    .teaching-copy p { color: #4f6662; font-size: 1.05rem; }
+    .education-card { align-self: center; padding: 2.2rem; border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); }
+    .education-card h3 { font-family: var(--serif); font-size: 1.55rem; font-weight: 400; }
+    .degree { display: grid; grid-template-columns: 56px 1fr; gap: 1rem; padding: 1.2rem 0; border-top: 1px solid var(--line); }
+    .degree:first-of-type { margin-top: .4rem; }
+    .degree-year { color: var(--gold); font-weight: 780; }
+    .degree b { display: block; }
+    .degree span { color: var(--muted); font-size: .9rem; }
+
+    .contact { text-align: center; }
+    .contact .section-title { margin-inline: auto; }
+    .contact .section-intro { margin-inline: auto; }
+    .contact-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 2rem; }
+    .contact-line { width: 1px; height: 70px; margin: 0 auto 2rem; background: var(--line); }
+
+    footer { padding: 34px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 2rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+    .footer-links a { text-underline-offset: 4px; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .feature-grid, .teaching-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 64px; }
+      .portrait-wrap { width: min(620px, 92%); margin: 10px auto 0; }
+      .portrait-card, .portrait-card img { min-height: 490px; }
+      .about-aside { position: static; }
+      .focus-grid { grid-template-columns: 1fr 1fr; }
+      .publication { grid-template-columns: 64px 1fr; }
+      .pub-venue { grid-column: 2; text-align: left; }
+    }
+
+    @media (max-width: 660px) {
+      .shell { width: min(100% - 26px, 1180px); }
+      nav { min-height: 66px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { font-size: .82rem !important; }
+      h1 { font-size: clamp(3.15rem, 17vw, 4.7rem); }
+      section { padding: 78px 0; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .focus-card { min-height: 260px; }
+      .focus-card h3 { margin-top: 3rem; }
+      .publications-head { display: block; }
+      .publications-head .button { margin-top: 1rem; }
+      .publication { grid-template-columns: 1fr; gap: .45rem; }
+      .pub-venue { grid-column: auto; }
+      .photo-note { right: -8px; bottom: 24px; }
+      .portrait-card, .portrait-card img { min-height: 430px; }
+      .footer-grid { flex-direction: column; gap: .8rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header id="site-header">
+    <nav class="shell" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Shaoyang Liu homepage">
+        <span class="brand-mark">SL</span>
+        <span>Shaoyang Liu</span>
+      </a>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Analytical chemistry · Sustainable materials</div>
+          <h1>Shaoyang <span>Liu, Ph.D.</span></h1>
+          <p class="hero-copy">Professor in the Department of Chemistry and Physics at Troy University, advancing practical analytical methods for safer materials, cleaner processes, and a more sustainable future.</p>
+          <div class="hero-actions">
+            <a class="button" href="#research">Explore my research <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="button secondary" href="https://scholar.google.com/citations?user=hvv7dsEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap reveal">
+          <div class="portrait-card">
+            <img src="https://today.troy.edu/wp-content/uploads/2025/09/DSC_4294-21.jpg" alt="Dr. Shaoyang Liu in a Troy University research setting">
+          </div>
+          <div class="photo-note">
+            <strong>Analytical chemistry for safer, more sustainable materials.</strong>
+            <span>Troy, Alabama</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="shell about-grid">
+        <aside class="about-aside reveal">
+          <div class="section-kicker">About</div>
+          <div class="mini-facts">
+            <div class="mini-fact"><b>Position</b><span>Professor of Chemistry</span></div>
+            <div class="mini-fact"><b>Institution</b><span>Troy University</span></div>
+            <div class="mini-fact"><b>Department</b><span>Chemistry &amp; Physics</span></div>
+          </div>
+        </aside>
+        <div class="about-copy reveal">
+          <p>I develop analytical tools that make complex materials easier to understand—and safer to use.</p>
+          <p>My research and development experience spans polymer recycling, environmental analysis, spectroscopy, microscopy, renewable fuels, and food chemistry. Across these areas, the goal is consistent: translate careful measurement into solutions that matter to industry, communities, and the environment.</p>
+          <p>I am equally committed to undergraduate research. The laboratory is a place where students learn to ask precise questions, handle sophisticated instrumentation, and connect fundamental chemistry to challenges beyond the classroom.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="shell">
+        <div class="section-kicker reveal">Research</div>
+        <h2 class="section-title reveal">Measurement science for materials that move society forward.</h2>
+        <p class="section-intro reveal">My work sits at the intersection of analytical chemistry, sustainable materials, and applied problem-solving.</p>
+
+        <div class="focus-grid">
+          <article class="focus-card reveal">
+            <span class="focus-number">01</span>
+            <h3>Polymer recycling &amp; safety</h3>
+            <p>Detecting hazardous volatile compounds and improving confidence in recycled plastic products and circular material systems.</p>
+          </article>
+          <article class="focus-card reveal">
+            <span class="focus-number">02</span>
+            <h3>Instrumental analysis</h3>
+            <p>Applying chromatography, mass spectrometry, spectroscopy, and microscopy to demanding chemical measurement problems.</p>
+          </article>
+          <article class="focus-card reveal">
+            <span class="focus-number">03</span>
+            <h3>Sustainable chemistry</h3>
+            <p>Exploring renewable fuels, cellulose-based materials, environmental contaminants, and analytical strategies that support safer production.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" aria-labelledby="featured-project">
+      <div class="shell feature-grid">
+        <div class="reveal">
+          <div class="grant-amount">$534K</div>
+          <div class="grant-label">National Science Foundation Research in Undergraduate Institutions award</div>
+        </div>
+        <div class="feature-copy reveal">
+          <div class="section-kicker">Featured project</div>
+          <h2 class="section-title" id="featured-project">Making recycled plastics safer.</h2>
+          <p>This NSF-supported work develops a sensitive, rapid method for detecting hazardous volatile organic compounds in recycled plastics using solid-phase microextraction and gas chromatography–mass spectrometry.</p>
+          <p>The project pairs materials-safety research with hands-on opportunities for Troy University undergraduates to build expertise in state-of-the-art analytical chemistry.</p>
+          <a class="feature-link" href="https://today.troy.edu/news/troy-professor-receives-over-500k-grant-to-research-ways-to-test-safety-of-recycled-plastics/" target="_blank" rel="noopener">Read the project story ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="shell">
+        <div class="publications-head reveal">
+          <div>
+            <div class="section-kicker">Selected publications</div>
+            <h2 class="section-title">Recent lead and corresponding-author work.</h2>
+            <p class="section-intro">Selected for recency, research leadership, journal standing, and relevance to analytical chemistry and recycled materials.</p>
+          </div>
+          <a class="button secondary" href="https://scholar.google.com/citations?user=hvv7dsEAAAAJ&amp;hl=en" target="_blank" rel="noopener">View full profile ↗</a>
+        </div>
+
+        <div class="publication-list reveal">
+          <a class="publication" href="https://doi.org/10.1016/j.microc.2026.117415" target="_blank" rel="noopener">
+            <span class="pub-year">2026</span>
+            <span class="pub-title">A novel application of artificial intelligence for chemometrics: Generating R code to build predictive model for quantitative spectrometric analysis</span>
+            <span class="pub-venue">Microchemical Journal</span>
+          </a>
+          <a class="publication" href="https://doi.org/10.1021/acsomega.4c00414" target="_blank" rel="noopener">
+            <span class="pub-year">2024</span>
+            <span class="pub-title">Monitoring CaCO<sub>3</sub> content in recycled polypropylene with Raman spectrometry</span>
+            <span class="pub-venue">ACS Omega</span>
+          </a>
+          <a class="publication" href="https://doi.org/10.1080/1023666X.2024.2306428" target="_blank" rel="noopener">
+            <span class="pub-year">2024</span>
+            <span class="pub-title">Comparison of PCR and PLSR modeling methods for quantifying polyethylene in recycled polypropylene with near-infrared spectrometry</span>
+            <span class="pub-venue">International Journal of Polymer Analysis and Characterization</span>
+          </a>
+          <a class="publication" href="https://doi.org/10.1016/j.polymertesting.2023.107938" target="_blank" rel="noopener">
+            <span class="pub-year">2023</span>
+            <span class="pub-title">Comparison of NIR and Raman spectrometries as quantitative methods to monitor polyethylene content in recycled polypropylene</span>
+            <span class="pub-venue">Polymer Testing</span>
+          </a>
+          <a class="publication" href="https://doi.org/10.1016/j.chemosphere.2020.127589" target="_blank" rel="noopener">
+            <span class="pub-year">2020</span>
+            <span class="pub-title">Analysis of volatile compounds causing undesirable odors in a polypropylene–high-density polyethylene recycled plastic resin with solid-phase microextraction</span>
+            <span class="pub-venue">Chemosphere · Foundational study</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="teaching" id="teaching">
+      <div class="shell teaching-grid">
+        <div class="teaching-copy reveal">
+          <div class="section-kicker">Teaching &amp; mentorship</div>
+          <h2 class="section-title">Preparing students to do science—not simply study it.</h2>
+          <p>My teaching emphasizes sound analytical judgment, thoughtful experimental design, and clear scientific communication. Through coursework and research, students learn how modern chemistry can address challenges in materials, health, industry, and the environment.</p>
+          <p>Undergraduate researchers gain practical experience with advanced techniques while contributing to work with genuine scientific and public value.</p>
+        </div>
+
+        <aside class="education-card reveal" aria-label="Education">
+          <h3>Education</h3>
+          <div class="degree">
+            <span class="degree-year">2007</span>
+            <div><b>Ph.D. in Chemistry</b><span>University of Science and Technology of China</span></div>
+          </div>
+          <div class="degree">
+            <span class="degree-year">2002</span>
+            <div><b>B.S. in Chemistry</b><span>University of Science and Technology of China</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell reveal">
+        <div class="contact-line" aria-hidden="true"></div>
+        <div class="section-kicker">Contact</div>
+        <h2 class="section-title">Let’s talk about research, students, or collaboration.</h2>
+        <p class="section-intro">Department of Chemistry and Physics · Troy University · Troy, Alabama</p>
+        <div class="contact-actions">
+          <a class="button" href="mailto:lius@troy.edu">Email Dr. Liu</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/shaoyang-liu-79502950/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="button secondary" href="https://scholar.google.com/citations?user=hvv7dsEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <span>© <span id="year"></span> Shaoyang Liu. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="https://www.troy.edu/academics/colleges-schools/college-science-engineering/departments/chemistry-physics/about-us.html" target="_blank" rel="noopener">Troy Chemistry &amp; Physics</a>
+        <a href="https://today.troy.edu/news/troy-professor-receives-over-500k-grant-to-research-ways-to-test-safety-of-recycled-plastics/" target="_blank" rel="noopener">Photo &amp; project source</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const header = document.getElementById('site-header');
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 16);
+    updateHeader();
+    addEventListener('scroll', updateHeader, { passive: true });
+
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+  </script>
+</body>
+</html>
